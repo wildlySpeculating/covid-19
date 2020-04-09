@@ -30,7 +30,6 @@ export default function useCovidData() {
 
   const getCountyDataByFips = useCallback(
     (fips) => {
-      console.log('fips', fips)
       const covidData = countyCovidData.filter((item) => item[3] === fips)
       const countyName = fipsToCountyNameMap[fips]
       const state = fipsToStateNameMap[fips.slice(0, 2)]
@@ -99,8 +98,6 @@ export default function useCovidData() {
       casesIdx: 4,
     })
 
-    console.log(fipsToHightLowMap)
-
     // calculate and sort by percent change and add in names
     const sortedByTrendArray = Object.entries(fipsToHightLowMap)
       .filter(([fips, { high }]) => fips && high > 100)
@@ -126,8 +123,6 @@ export default function useCovidData() {
       fipsIdx: 2,
       casesIdx: 3,
     })
-
-    console.log(fipsToHightLowMap)
 
     // calculate and sort by percent change and add in names
     const sortedByTrendArray = Object.entries(fipsToHightLowMap)

@@ -21,7 +21,7 @@ export default function SearchInput(props) {
 
   return (
     <input
-      autocomplete="off"
+      autoComplete="off"
       className={cn('c-search__input  u-padding-sides-tiny', className)}
       id={id}
       name={name || id}

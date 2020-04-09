@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cn from 'classnames'
 
+import ViewTitle from './ViewTitle'
+
 export default function Trending(props) {
   const { className, sortedData, title, trendCount } = props
 
@@ -12,7 +14,7 @@ export default function Trending(props) {
     <div className={cn('c-trending', className)}>
       <div className="o-grid">
         <div className="o-grid__item  u-1/1">
-          <h4>{title}</h4>
+          <ViewTitle>{title}</ViewTitle>
         </div>
         <div className="o-grid__item  u-1/1">
           <div className="o-grid  o-grid--justify-center  o-grid--gutters  u-padding  u-border">
@@ -20,7 +22,7 @@ export default function Trending(props) {
               <h5 className="u-margin-bot-small">Trending Up</h5>
               <ol className="">
                 {trendingUp.map(({ fips, name, low, high, percentIncrease }) => (
-                  <li className="">
+                  <li className="" key={fips}>
                     {name} {`${percentIncrease}%`}
                   </li>
                 ))}
@@ -30,7 +32,7 @@ export default function Trending(props) {
               <h5 className="u-margin-bot-small">Flattening the Curve</h5>
               <ol className="">
                 {flatteningTheCurve.map(({ fips, name, low, high, percentIncrease }) => (
-                  <li className="">
+                  <li className="" key={fips}>
                     {name} {`${percentIncrease}%`}
                   </li>
                 ))}

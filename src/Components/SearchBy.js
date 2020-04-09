@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 import Search from './Search/Search'
+import ViewTitle from './ViewTitle'
 
 export default function SearchBy(props) {
   const {
@@ -26,12 +27,10 @@ export default function SearchBy(props) {
     }
   }
 
-  console.log('searchSuggestions', id)
-
   return (
     <div className="o-grid  u-margin-bot">
       <div className="o-grid__item  u-1/1">
-        <h4>{headingText}</h4>
+        <ViewTitle>{headingText}</ViewTitle>
       </div>
       <div className="o-grid__item  u-1/1">
         <div className="o-grid  o-grid--justify-center">
