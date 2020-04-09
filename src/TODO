@@ -1,0 +1,22 @@
+TODO
+- maybe remove zip county csv
+- routing
+- click on trending to see map
+- write to file NYT data if data is updated
+- snippits for context
+
+DONE
+- trending upward
+- trending downward
+- snippits for onChange={onChange}
+- add powered by NYT
+- turn autocomplete off on SearchInput
+- [bug] when multiple charts are rendered clicking time frame on second chart frame changes the timeframe on the first
+- add timeframe eg all time last 30 days 7 days
+- add context to Tabs
+- make TimeFrameSelector into Tabs
+- [bug] state search suggestions stay open 
+- clean up zipCountyFips data
+- search by county name
+- state data
+- combine CountyResults and StateResults
