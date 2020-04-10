@@ -10,7 +10,6 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
-    "css-core": "git+ssh://git@github.com:pschreibs85/css_core.git",
     "lodash.get": "^4.4.2",
     "node-sass": "^4.13.1",
     "papaparse": "^5.1.1",
