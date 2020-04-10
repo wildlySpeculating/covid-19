@@ -25,6 +25,10 @@ DONE
 
     "css-core": "git+ssh://git@github.com:pschreibs85/css_core.git",
 
+    "css-core": "git+https://github.com/pschreibs85/css_core.git",
+
+"css-core": "git+https://$CSS_CORE_ACCESS:x-oauth-basic@github.com/pschreibs85/css_core.git",
+
 
 
 "proxy": "https://raw.githubusercontent.com/",
