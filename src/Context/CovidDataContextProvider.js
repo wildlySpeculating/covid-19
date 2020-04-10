@@ -6,8 +6,10 @@ import CovidDataContext, { defaultContext } from './CovidDataContext'
 import zipCountyFips from '../ZIP-COUNTY-FIPS_2018-03.csv'
 import fipsToStateNameMap from '../data/fipsToStateNameMap'
 
-const NY_TIMES_COUNTY_DATA_URL = '/nytimes/covid-19-data/master/us-counties.csv'
-const NY_TIMES_STATE_DATA_URL = '/nytimes/covid-19-data/master/us-states.csv'
+import NY_TIMES_COUNTY_DATA_URL from '../us-counties.csv'
+import NY_TIMES_STATE_DATA_URL from '../us-states.csv'
+// const NY_TIMES_COUNTY_DATA_URL = '/nytimes/covid-19-data/master/us-counties.csv'
+// const NY_TIMES_STATE_DATA_URL = '/nytimes/covid-19-data/master/us-states.csv'
 
 const initialState = defaultContext
 

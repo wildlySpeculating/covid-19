@@ -21,3 +21,10 @@ DONE
 - search by county name
 - state data
 - combine CountyResults and StateResults
+
+
+    "css-core": "git+ssh://git@github.com:pschreibs85/css_core.git",
+
+        "covid-19-data": "https://github.com/nytimes/covid-19-data.git",
+
+          "proxy": "https://raw.githubusercontent.com/",
