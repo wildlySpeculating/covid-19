@@ -46,7 +46,6 @@ export default function ResultsDisplay(props) {
         <div className="o-grid__item  u-1/1">
           <TimeFrameSelector
             activeTabId={activeTabId}
-            name={displayName}
             onChange={handleChange}
             timeFrames={timeFrames}
           />
@@ -54,7 +53,7 @@ export default function ResultsDisplay(props) {
         <div className="o-grid__item  u-1/1">
           <BarChart data={barChartData}></BarChart>
         </div>
-        <NYTAttribute></NYTAttribute>
+        <NYTAttribute />
       </div>
     )
   )

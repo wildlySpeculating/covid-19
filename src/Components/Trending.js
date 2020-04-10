@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import cn from 'classnames'
 
 import ViewTitle from './ViewTitle'
+import NYTAttribute from './NYTAttribute'
 
 export default function Trending(props) {
   const { className, sortedData, title, trendCount } = props
@@ -18,7 +19,7 @@ export default function Trending(props) {
         </div>
         <div className="o-grid__item  u-1/1">
           <div className="o-grid  o-grid--justify-center  o-grid--gutters  u-padding  u-border">
-            <div className="o-grid__item  u-text-left">
+            <div className="o-grid__item  u-1/2  u-text-left">
               <h5 className="u-margin-bot-small">Trending Up</h5>
               <ol className="">
                 {trendingUp.map(({ fips, name, low, high, percentIncrease }) => (
@@ -28,7 +29,7 @@ export default function Trending(props) {
                 ))}
               </ol>
             </div>
-            <div className="o-grid__item  u-text-left">
+            <div className="o-grid__item  u-1/2  u-text-left">
               <h5 className="u-margin-bot-small">Flattening the Curve</h5>
               <ol className="">
                 {flatteningTheCurve.map(({ fips, name, low, high, percentIncrease }) => (
@@ -40,6 +41,7 @@ export default function Trending(props) {
             </div>
           </div>
         </div>
+        <NYTAttribute className="o-grid__item  u-1/1  u-text-right" />
       </div>
     </div>
   )

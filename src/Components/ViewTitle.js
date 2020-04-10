@@ -5,7 +5,7 @@ import cn from 'classnames'
 export default function ViewTitle(props) {
   const { children, className } = props
 
-  return <h4 className={cn('', className)}>{children}</h4>
+  return <h4 className={cn('c-view-title', className)}>{children}</h4>
 }
 
 ViewTitle.propTypes = {

@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App  u-margin-sides-large">
       <header>
-        <h1>United States COVID-19 case tracker</h1>
+        <h1 className="c-app-title">United States COVID-19 case tracker</h1>
       </header>
       <CovidDataContextProvider>
         <div>

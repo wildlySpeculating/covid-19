@@ -5,15 +5,12 @@ import cn from 'classnames'
 import Tabs from './Tabs/Tabs'
 
 export default function TimeFrameSelector(props) {
-  const { activeTabId, className, name, onChange, timeFrames } = props
-
-  console.log('name', name)
+  const { activeTabId, className, onChange, timeFrames } = props
 
   return (
     <Tabs
       activeTabId={activeTabId}
       className={cn('o-grid  o-grid--justify-center', className)}
-      name={name}
       onChange={onChange}
     >
       {timeFrames.map(({ id, content }) => (
@@ -28,7 +25,6 @@ export default function TimeFrameSelector(props) {
 TimeFrameSelector.propTypes = {
   activeTabId: PropTypes.string.isRequired,
   className: PropTypes.string,
-  name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   timeFrames: PropTypes.arrayOf(
     PropTypes.shape({

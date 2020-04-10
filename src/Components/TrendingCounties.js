@@ -9,7 +9,7 @@ export default function TrendingCounties(props) {
 
   const { getTrendingCounties } = useCovidData()
 
-  const trending = getTrendingCounties()
+  const trending = getTrendingCounties(5)
 
   return (
     <Trending
