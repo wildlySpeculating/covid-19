@@ -25,6 +25,8 @@ DONE
 
     "css-core": "git+ssh://git@github.com:pschreibs85/css_core.git",
 
-        "covid-19-data": "https://github.com/nytimes/covid-19-data.git",
 
-          "proxy": "https://raw.githubusercontent.com/",
+
+"proxy": "https://raw.githubusercontent.com/",
+// const NY_TIMES_COUNTY_DATA_URL = '/nytimes/covid-19-data/master/us-counties.csv'
+// const NY_TIMES_STATE_DATA_URL = '/nytimes/covid-19-data/master/us-states.csv'

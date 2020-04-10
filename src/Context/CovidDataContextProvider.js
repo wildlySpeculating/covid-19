@@ -1,15 +1,12 @@
 import React, { useEffect, useMemo, useReducer } from 'react'
 import PropTypes from 'prop-types'
 import papa from 'papaparse'
+import NY_TIMES_COUNTY_DATA from 'covid-19-data/us-counties.csv'
+import NY_TIMES_STATE_DATA from 'covid-19-data/us-states.csv'
 
 import CovidDataContext, { defaultContext } from './CovidDataContext'
 import zipCountyFips from '../ZIP-COUNTY-FIPS_2018-03.csv'
 import fipsToStateNameMap from '../data/fipsToStateNameMap'
-
-import NY_TIMES_COUNTY_DATA_URL from '../us-counties.csv'
-import NY_TIMES_STATE_DATA_URL from '../us-states.csv'
-// const NY_TIMES_COUNTY_DATA_URL = '/nytimes/covid-19-data/master/us-counties.csv'
-// const NY_TIMES_STATE_DATA_URL = '/nytimes/covid-19-data/master/us-states.csv'
 
 const initialState = defaultContext
 
@@ -71,7 +68,7 @@ export default function CovidDataContextProvider(props) {
 
   // add raw NYT county data to context
   useEffect(() => {
-    papa.parse(NY_TIMES_COUNTY_DATA_URL, {
+    papa.parse(NY_TIMES_COUNTY_DATA, {
       download: true,
       complete: function (results, file) {
         CovidDataContextDispatch({
@@ -84,7 +81,7 @@ export default function CovidDataContextProvider(props) {
 
   // add raw NYT state data to context
   useEffect(() => {
-    papa.parse(NY_TIMES_STATE_DATA_URL, {
+    papa.parse(NY_TIMES_STATE_DATA, {
       download: true,
       complete: function (results, file) {
         CovidDataContextDispatch({
