@@ -104,7 +104,7 @@ export default function BarChart(props) {
           labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
           motionStiffness={90}
           motionDamping={15}
-          tooltip={(info) => <ToolTip info={info} />}
+          tooltip={(info) => <ToolTipMobile info={info} />}
         />
       </div>
     </div>
@@ -130,11 +130,40 @@ function ToolTip(props) {
       <tbody>
         <tr>
           <td className="u-text-left">Date:</td>
-          <td>{indexValue}</td>
+          <td className="u-text-right">{indexValue}</td>
         </tr>
         <tr>
           <td className="u-text-left">{`${id[0].toUpperCase()}${id.slice(1)}`}:</td>
-          <td>{value}</td>
+          <td className="u-text-right">{value}</td>
+        </tr>
+      </tbody>
+    </table>
+  )
+}
+
+function ToolTipMobile(props) {
+  const {
+    info: {
+      data: { cases, date, deaths },
+    },
+  } = props
+
+  console.log('props.info', props.info)
+
+  return (
+    <table className="u-margin-bot-none">
+      <tbody>
+        <tr>
+          <td className="u-text-left">Date:</td>
+          <td className="u-text-right">{date}</td>
+        </tr>
+        <tr>
+          <td className="u-text-left">Cases:</td>
+          <td className="u-text-right">{cases}</td>
+        </tr>
+        <tr>
+          <td className="u-text-left">Deaths:</td>
+          <td className="u-text-right">{deaths}</td>
         </tr>
       </tbody>
     </table>

@@ -30,11 +30,21 @@ export default function useCovidData() {
 
   const getCountyDataByFips = useCallback(
     (fips) => {
-      const covidData = countyCovidData.filter((item) => item[3] === fips)
-      const countyName = fipsToCountyNameMap[fips]
+      const NYC_FIPS = new Set(['36061', '36047', '36081', '36005', '36085'])
+      const NEW_YORK_CITY = 'New York City'
+      const isNYC = NYC_FIPS.has(fips)
+
+      const covidData = countyCovidData.filter((item) =>
+        isNYC ? item[1] === NEW_YORK_CITY : item[3] === fips
+      )
+      const countyName = isNYC ? NEW_YORK_CITY : fipsToCountyNameMap[fips]
       const state = fipsToStateNameMap[fips.slice(0, 2)]
 
-      return { id: fips, covidData, displayName: `${countyName}, ${state.full}` }
+      return {
+        id: fips,
+        covidData,
+        displayName: `${countyName}, ${state.full}`,
+      }
     },
     [countyCovidData, fipsToCountyNameMap, fipsToStateNameMap]
   )
@@ -43,7 +53,8 @@ export default function useCovidData() {
     (searchTerm) => {
       return createSearchSuggestions({
         arrayToSearch: sortedCountyNameList,
-        displayTextFn: (item) => `${item[1]}, ${fipsToStateNameMap[item[0].slice(0, 2)].full}`,
+        displayTextFn: (item) =>
+          `${item[1]}, ${get(fipsToStateNameMap, [item[0].slice(0, 2), 'full'], '')}`,
         idxToSearch: 1,
         searchTerm,
         valueFn: ([fips]) => fips,

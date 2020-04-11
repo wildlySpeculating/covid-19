@@ -3,10 +3,14 @@ TODO
 - click on trending to see map
 - make states all one list
 - add table for all of the counties in the state
+- make up arrow gradient based on percent
 - snippits for context
+- add data exceptions
+- fix Kansas City data issues mentioned on github
 - write to file NYT data if data is updated
 
 DONE
+- fix NYC data issues mentioned on github
 - add minimum 100 cases disclaimer to trending counties
 - maybe remove zip county csv
 - mobile

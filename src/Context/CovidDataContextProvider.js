@@ -97,12 +97,13 @@ export default function CovidDataContextProvider(props) {
     papa.parse(zipCountyFips, {
       download: true,
       complete: function (results, file) {
+        const slicedData = results.data.slice(1)
         CovidDataContextDispatch({
           type: ACTION_TYPES.SET_RAW_FIPS_DATA,
-          payload: results.data,
+          payload: slicedData,
         })
 
-        const nextFipsToCountyNameMap = results.data.reduce((prev, curr) => {
+        const nextFipsToCountyNameMap = slicedData.reduce((prev, curr) => {
           if (!prev.hasOwnProperty(curr[1])) {
             prev[curr[1]] = curr[4]
           }
