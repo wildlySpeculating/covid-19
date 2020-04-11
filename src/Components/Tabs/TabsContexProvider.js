@@ -14,5 +14,4 @@ export default function TabsContextProvider(props) {
 TabsContextProvider.propTypes = {
   activeTabId: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-  name: PropTypes.string.isRequired,
 }

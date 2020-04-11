@@ -23,7 +23,6 @@ Tabs.propTypes = {
   activeTabId: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 }
 

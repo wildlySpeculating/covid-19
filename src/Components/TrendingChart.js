@@ -1,15 +1,42 @@
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 import cn from 'classnames'
 
+import TimeFrameSelector from './TimeFrameSelector'
+
+const FIVE = 'FIVE'
+const TEN = 'TEN'
+const THREE = 'THREE'
+
+const timeFrames = {
+  THREE: { id: THREE, content: '3 days', duration: 3 },
+  FIVE: { id: FIVE, content: '5 days', duration: 5 },
+  TEN: { id: TEN, content: '10 days', duration: 10 },
+}
+
 export default function TrendingChart(props) {
-  const { className, dataArray, title } = props
+  const { className, getData, title } = props
+
+  const [activeTabId, setActiveTabId] = useState(THREE)
+
+  const trendingData = useMemo(() => {
+    return getData(timeFrames[activeTabId].duration)
+  }, [activeTabId, getData])
+
+  function handleChange(e) {
+    setActiveTabId(e.target.id)
+  }
 
   return (
     <div className={cn('', className)}>
       <h5 className="u-margin-bot-small">{title}</h5>
+      <TimeFrameSelector
+        activeTabId={activeTabId}
+        onChange={handleChange}
+        timeFrames={Object.values(timeFrames)}
+      />
       <ol className="u-margin-bot-none">
-        {dataArray.map(({ fips, name, low, high, percentIncrease }) => (
+        {trendingData.map(({ fips, name, low, high, percentIncrease }) => (
           <li className="" key={fips}>
             {name} {`${percentIncrease}%`}
           </li>
@@ -21,15 +48,7 @@ export default function TrendingChart(props) {
 
 TrendingChart.propTypes = {
   className: PropTypes.string,
-  dataArray: PropTypes.arrayOf(
-    PropTypes.shape({
-      fips: PropTypes.string.isRequired,
-      high: PropTypes.number.isRequired,
-      low: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      percentIncrease: PropTypes.number.isRequired,
-    })
-  ).isRequired,
+  getData: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
 }
 
