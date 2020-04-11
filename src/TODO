@@ -1,12 +1,13 @@
 TODO
-- maybe remove zip county csv
 - routing
 - click on trending to see map
-- write to file NYT data if data is updated
 - add minimum 100 cases disclaimer to trending counties
 - snippits for context
+- write to file NYT data if data is updated
 
 DONE
+- maybe remove zip county csv
+- mobile
 - trending upward
 - trending downward
 - snippits for onChange={onChange}
@@ -27,8 +28,13 @@ DONE
 
     "css-core": "git+https://github.com/pschreibs85/css_core.git",
 
-"css-core": "git+https://$CSS_CORE_ACCESS:x-oauth-basic@github.com/pschreibs85/css_core.git",
 
+
+
+    "css-core": "git+https://${CSS_CORE_ACCESS}:x-oauth-basic@github.com/pschreibs85/css_core.git",
+
+
+    "css-core": "git+https://$npm_package_css:x-oauth-basic@github.com/pschreibs85/css_core.git",
 
 
 "proxy": "https://raw.githubusercontent.com/",

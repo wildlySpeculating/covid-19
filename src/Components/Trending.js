@@ -4,6 +4,7 @@ import cn from 'classnames'
 
 import ViewTitle from './ViewTitle'
 import NYTAttribute from './NYTAttribute'
+import TrendingChart from './TrendingChart'
 
 export default function Trending(props) {
   const { className, sortedData, title, trendCount } = props
@@ -18,27 +19,17 @@ export default function Trending(props) {
           <ViewTitle>{title}</ViewTitle>
         </div>
         <div className="o-grid__item  u-1/1">
-          <div className="o-grid  o-grid--justify-center  o-grid--gutters  u-padding  u-border">
-            <div className="o-grid__item  u-1/2  u-text-left">
-              <h5 className="u-margin-bot-small">Trending Up</h5>
-              <ol className="">
-                {trendingUp.map(({ fips, name, low, high, percentIncrease }) => (
-                  <li className="" key={fips}>
-                    {name} {`${percentIncrease}%`}
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <div className="o-grid__item  u-1/2  u-text-left">
-              <h5 className="u-margin-bot-small">Flattening the Curve</h5>
-              <ol className="">
-                {flatteningTheCurve.map(({ fips, name, low, high, percentIncrease }) => (
-                  <li className="" key={fips}>
-                    {name} {`${percentIncrease}%`}
-                  </li>
-                ))}
-              </ol>
-            </div>
+          <div className="o-grid  o-grid--justify-center  u-padding  u-border">
+            <TrendingChart
+              className="o-grid__item  u-text-left  u-1/1  u-1/2@tablet  u-margin-bot  u-margin-bot-none@tablet"
+              dataArray={trendingUp}
+              title={'Trending up'}
+            />
+            <TrendingChart
+              className="o-grid__item  u-text-left  u-1/1  u-1/2@tablet"
+              dataArray={flatteningTheCurve}
+              title={'Flattening the Curve'}
+            />
           </div>
         </div>
         <NYTAttribute className="o-grid__item  u-1/1  u-text-right" />

@@ -12,15 +12,15 @@ function App() {
   return (
     <div className="App  u-margin-sides-large">
       <header>
-        <h1 className="c-app-title">United States COVID-19 case tracker</h1>
+        <h1 className="c-app-title">United States COVID-19 Thingy</h1>
       </header>
       <CovidDataContextProvider>
         <div>
           <TrendingStates className="u-margin-bot" />
           <TrendingCounties className="u-margin-bot" />
-          <SearchByState className="u-margin-bot" />
-          <SearchByCounty className="u-margin-bot" />
           <SearchByZipCode className="u-margin-bot" />
+          <SearchByCounty className="u-margin-bot" />
+          <SearchByState className="u-margin-bot" />
         </div>
       </CovidDataContextProvider>
     </div>

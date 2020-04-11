@@ -97,10 +97,10 @@ export default function CovidDataContextProvider(props) {
     papa.parse(zipCountyFips, {
       download: true,
       complete: function (results, file) {
-        // CovidDataContextDispatch({
-        //   type: ACTION_TYPES.SET_RAW_FIPS_DATA,
-        //   payload: results.data,
-        // })
+        CovidDataContextDispatch({
+          type: ACTION_TYPES.SET_RAW_FIPS_DATA,
+          payload: results.data,
+        })
 
         const nextFipsToCountyNameMap = results.data.reduce((prev, curr) => {
           if (!prev.hasOwnProperty(curr[1])) {

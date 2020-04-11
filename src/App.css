@@ -13,9 +13,13 @@
 }
 
 .c-button-inline {
-  background: none !important;
+  background: none;
   border: none;
-  padding: 0 !important;
+  padding: 0;
+}
+
+.c-search__input {
+  border: 1px solid #999;
 }
 
 .c-label {
@@ -29,6 +33,7 @@
 .c-search__suggestion-list {
   border: 1px solid #999;
   border-top-width: 0;
+  margin-bottom: 0;
 }
 
 .c-search__suggestion {

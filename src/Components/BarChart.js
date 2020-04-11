@@ -8,6 +8,69 @@ export default function BarChart(props) {
 
   return (
     <div className={cn('c-bar_chart', className)}>
+      <div className="u-show@tablet">
+        <ResponsiveBar
+          animate
+          borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+          colors={{ scheme: 'nivo' }}
+          data={data}
+          indexBy="date"
+          keys={['cases', 'deaths']}
+          margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+          padding={0.5}
+          axisBottom={
+            data.length <= 30
+              ? {
+                  tickSize: 4,
+                  tickPadding: 5,
+                  tickRotation: 45,
+                  legend: 'Date',
+                  legendPosition: 'middle',
+                  legendOffset: 42,
+                }
+              : null
+          }
+          axisLeft={{
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: 'Count',
+            legendPosition: 'middle',
+            legendOffset: -50,
+          }}
+          labelSkipWidth={20}
+          labelSkipHeight={12}
+          labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+          legends={[
+            {
+              dataFrom: 'keys',
+              anchor: 'bottom-right',
+              direction: 'column',
+              justify: false,
+              translateX: 120,
+              translateY: 0,
+              itemsSpacing: 2,
+              itemWidth: 100,
+              itemHeight: 20,
+              itemDirection: 'left-to-right',
+              itemOpacity: 0.85,
+              symbolSize: 20,
+              effects: [
+                {
+                  on: 'hover',
+                  style: {
+                    itemOpacity: 1,
+                  },
+                },
+              ],
+            },
+          ]}
+          motionStiffness={90}
+          motionDamping={15}
+          tooltip={(info) => <ToolTip info={info} />}
+        />
+      </div>
+      <div className="u-hide@tablet"></div>
       <ResponsiveBar
         animate
         borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
@@ -15,15 +78,14 @@ export default function BarChart(props) {
         data={data}
         indexBy="date"
         keys={['cases', 'deaths']}
-        margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+        margin={{ top: 10, right: 10, bottom: 50, left: 60 }}
         padding={0.5}
         axisBottom={
-          data.length <= 30
+          data.length <= 7
             ? {
                 tickSize: 4,
                 tickPadding: 5,
                 tickRotation: 45,
-                legend: 'Date',
                 legendPosition: 'middle',
                 legendOffset: 42,
               }
@@ -40,30 +102,6 @@ export default function BarChart(props) {
         labelSkipWidth={20}
         labelSkipHeight={12}
         labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-        legends={[
-          {
-            dataFrom: 'keys',
-            anchor: 'bottom-right',
-            direction: 'column',
-            justify: false,
-            translateX: 120,
-            translateY: 0,
-            itemsSpacing: 2,
-            itemWidth: 100,
-            itemHeight: 20,
-            itemDirection: 'left-to-right',
-            itemOpacity: 0.85,
-            symbolSize: 20,
-            effects: [
-              {
-                on: 'hover',
-                style: {
-                  itemOpacity: 1,
-                },
-              },
-            ],
-          },
-        ]}
         motionStiffness={90}
         motionDamping={15}
         tooltip={(info) => <ToolTip info={info} />}

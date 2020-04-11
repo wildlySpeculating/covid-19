@@ -132,7 +132,11 @@ export default function useCovidData() {
 
       // calculate and sort by percent change and add in names
       const sortedByTrendArray = Object.entries(fipsToHightLowMap)
+        .filter(([fips, { high }]) => fips && high > 100)
         .map(([fips, { high, low }]) => {
+          if (fips === '60') {
+            console.log('high, low', high, low)
+          }
           const name = get(fipsToStateNameMap, [fips, 'full'], '')
           const percentIncrease = calculatePercentIncrease(low, high)
 
@@ -209,7 +213,7 @@ function createFipsHightToLowMap({ dataArray, daysInTimeFrame, casesIdx, fipsIdx
     const cases = curr[casesIdx]
 
     if (!prev.hasOwnProperty(fips)) {
-      prev[fips] = { high: cases, low: cases }
+      prev[fips] = { high: Number(cases), low: Number(cases) }
     } else {
       prev[fips].high = Math.max(prev[fips].high, cases)
     }

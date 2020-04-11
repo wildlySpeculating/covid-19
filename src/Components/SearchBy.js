@@ -34,9 +34,9 @@ export default function SearchBy(props) {
       </div>
       <div className="o-grid__item  u-1/1">
         <div className="o-grid  o-grid--justify-center">
-          <div className="o-grid__item u-2/3">
+          <div className="o-grid__item u-1/1  u-2/3@tablet">
             <div className="o-grid">
-              <div className="o-grid__item">
+              <div className="o-grid__item  u-1/1  u-width-auto@tablet">
                 <div className="o-grid">
                   <Search.Input
                     className="o-grid__item  u-1/1"
@@ -49,6 +49,7 @@ export default function SearchBy(props) {
                     <Search.SuggestionList className="o-grid__item  u-1/1">
                       {searchSuggestions.map((item) => (
                         <Search.Suggestion
+                          className="u-font-size-tiny"
                           key={item.displayText}
                           onClick={() => {
                             handleSelect(item)
@@ -62,7 +63,7 @@ export default function SearchBy(props) {
                 </div>
               </div>
 
-              <div className="o-grid__item  o-grid__item--shrink">
+              <div className="o-grid__item  u-1/1  u-show@tablet">
                 <Search.Button onClick={handleSearch}>See results</Search.Button>
               </div>
             </div>

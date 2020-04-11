@@ -14,7 +14,7 @@ export default function TimeFrameSelector(props) {
       onChange={onChange}
     >
       {timeFrames.map(({ id, content }) => (
-        <Tabs.Tab className="o-grid__item  u-1/5" id={id} key={id}>
+        <Tabs.Tab className="o-grid__item  u-no-wrap  u-1/3  u-1/5@tablet" id={id} key={id}>
           {content}
         </Tabs.Tab>
       ))}

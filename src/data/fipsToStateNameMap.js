@@ -50,6 +50,7 @@ const fipsToStateNameMap = {
   '54': { full: 'West Virginia', abrv: 'WV' },
   '55': { full: 'Wisconsin', abrv: 'WI' },
   '56': { full: 'Wyoming', abrv: 'WY' },
+  '60': { full: 'American Samoa', abrv: '' },
   '66': { full: 'Guam', abrv: '' },
   '69': { full: 'Northern Mariana Islands', abrv: '' },
   '72': { full: 'Puerto Rico', abrv: 'PR' },
