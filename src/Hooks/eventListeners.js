@@ -7,7 +7,6 @@ export function useKeyUpListener(targetKey) {
     function onKeyUp({ key }) {
       setIsKeyPressed(targetKey === key)
     }
-    console.log('effect running')
 
     document.addEventListener('keyup', onKeyUp, false)
 

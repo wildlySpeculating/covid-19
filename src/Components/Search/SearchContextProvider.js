@@ -41,8 +41,6 @@ export default function SearchContextProvider(props) {
     [searchContextState, searchContextDispatch, handleSearch]
   )
 
-  // console.log('searchContextState', searchContextState)
-
   return <SearchContext.Provider value={searchContextValue}>{children}</SearchContext.Provider>
 }
 

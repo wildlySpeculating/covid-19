@@ -23,7 +23,7 @@ export default function Trending(props) {
     <div className={cn('c-trending', className)}>
       <div className="o-grid">
         <div className="o-grid__item  u-1/1">
-          <ViewTitle>{title}*</ViewTitle>
+          <ViewTitle>{title}</ViewTitle>
         </div>
         <div className="o-grid__item  u-1/1">
           <div className="o-grid  o-grid--justify-center  u-padding  u-border">

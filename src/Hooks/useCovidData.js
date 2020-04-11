@@ -2,6 +2,7 @@ import { useContext, useMemo, useCallback } from 'react'
 import get from 'lodash.get'
 
 import CovidDataContext from '../Context/CovidDataContext'
+import { DYNAMIC_ROUTES } from '../Routes'
 
 export default function useCovidData() {
   const {
@@ -87,6 +88,23 @@ export default function useCovidData() {
     [stateCovidData, fipsToStateNameMap]
   )
 
+  const getCountiesByStateFips = useCallback(
+    (fips) => {
+      const sliceIndex = findSliceIndex(countyCovidData, 1)
+
+      const latestCountyData = countyCovidData
+        .slice(sliceIndex)
+        .filter((item) => item[3].startsWith(fips))
+        .map(([_, countyName, __, fips, cases, deaths]) => {
+          const href = DYNAMIC_ROUTES.COUNTY_RESULTS(fips)
+          return { countyName, cases, deaths, href }
+        })
+
+      return latestCountyData
+    },
+    [countyCovidData]
+  )
+
   const getStateSearchSuggestions = useCallback(
     (searchTerm) => {
       const stateArray = Object.entries(fipsToStateNameMap).map(([fips, { full }]) => [fips, full])
@@ -121,9 +139,10 @@ export default function useCovidData() {
             ''
           )}`
 
+          const href = DYNAMIC_ROUTES.COUNTY_RESULTS(fips)
           const percentIncrease = calculatePercentIncrease(low, high)
 
-          return { fips, name, low, high, percentIncrease }
+          return { fips, name, low, high, percentIncrease, href }
         })
         .sort((a, b) => a.percentIncrease - b.percentIncrease)
 
@@ -145,13 +164,11 @@ export default function useCovidData() {
       const sortedByTrendArray = Object.entries(fipsToHightLowMap)
         .filter(([fips, { high }]) => fips && high > 100)
         .map(([fips, { high, low }]) => {
-          if (fips === '60') {
-            console.log('high, low', high, low)
-          }
+          const href = DYNAMIC_ROUTES.STATE_RESULTS(fips)
           const name = get(fipsToStateNameMap, [fips, 'full'], '')
           const percentIncrease = calculatePercentIncrease(low, high)
 
-          return { fips, name, low, high, percentIncrease }
+          return { fips, name, low, high, percentIncrease, href }
         })
         .sort((a, b) => a.percentIncrease - b.percentIncrease)
 
@@ -160,11 +177,15 @@ export default function useCovidData() {
     [fipsToStateNameMap, stateCovidData]
   )
 
+  const getStateNameByFips = useCallback((fips) => fipsToStateNameMap[fips], [fipsToStateNameMap])
+
   return {
     getCountyDataByFips,
     getCountySearchSuggestionsByCountyName,
+    getCountiesByStateFips,
     getCountySearchSuggestionsByZip,
     getStateDataByFips,
+    getStateNameByFips,
     getStateSearchSuggestions,
     getTrendingCounties,
     getTrendingStates,

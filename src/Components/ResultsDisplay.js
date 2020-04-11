@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import cn from 'classnames'
 
 import BarChart from './BarChart'
-import TimeFrameSelector from './TimeFrameSelector'
+import TabSelector from './TabSelector'
 import NYTAttribute from './NYTAttribute'
 
 const MAX = 'MAX'
@@ -11,12 +11,11 @@ const MONTH = 'MONTH'
 const WEEK = 'WEEK'
 
 export default function ResultsDisplay(props) {
-  const { className, data, displayName } = props
+  const { children, className, data, displayName } = props
 
   const [activeTabId, setActiveTabId] = useState(MAX)
 
   function handleChange(e) {
-    console.log('handleChange called in ', displayName, 'with', e.target.id)
     setActiveTabId(e.target.id)
   }
 
@@ -41,19 +40,16 @@ export default function ResultsDisplay(props) {
   return (
     data &&
     data.length > 0 && (
-      <div>
-        <div className={cn('o-grid  u-border  u-padding-small', className)}>
+      <div className={className}>
+        <div className={cn('o-grid  u-border  u-padding-small')}>
           <h5 className="o-grid__item  u-1/1  u-margin-bot-small">{displayName}</h5>
           <div className="o-grid__item  u-1/1">
-            <TimeFrameSelector
-              activeTabId={activeTabId}
-              onChange={handleChange}
-              timeFrames={timeFrames}
-            />
+            <TabSelector activeTabId={activeTabId} onChange={handleChange} tabList={timeFrames} />
           </div>
           <div className="o-grid__item  u-1/1">
             <BarChart data={barChartData}></BarChart>
           </div>
+          <div className="o-grid__item  u-1/1">{children}</div>
         </div>
         <NYTAttribute className="u-text-left" />
       </div>
@@ -62,6 +58,7 @@ export default function ResultsDisplay(props) {
 }
 
 ResultsDisplay.propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string,
   data: PropTypes.arrayOf(
     PropTypes.shape({
@@ -74,5 +71,6 @@ ResultsDisplay.propTypes = {
 }
 
 ResultsDisplay.defaultProps = {
+  children: null,
   className: '',
 }

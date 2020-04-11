@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import ResultsDisplay from './ResultsDisplay'
 import useCovidData from '../Hooks/useCovidData'
+import StateCountyList from './StateCountyList'
 
 export default function StateResults(props) {
   const { fips } = props
@@ -25,7 +26,11 @@ export default function StateResults(props) {
     )
   }, [covidData])
 
-  return <ResultsDisplay data={barChartData} displayName={displayName} />
+  return (
+    <ResultsDisplay className="u-margin-bot" data={barChartData} displayName={displayName}>
+      <StateCountyList fips={fips} />
+    </ResultsDisplay>
+  )
 }
 
 StateResults.propTypes = {

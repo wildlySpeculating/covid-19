@@ -10,12 +10,12 @@
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
     "covid-19-data": "git://github.com/nytimes/covid-19-data.git",
-    "css-core": "git+https://${CSS_CORE_ACCESS}:x-oauth-basic@github.com/pschreibs85/css_core.git",
     "lodash.get": "^4.4.2",
     "node-sass": "^4.13.1",
     "papaparse": "^5.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "sass-mq": "^5.0.1"
   },

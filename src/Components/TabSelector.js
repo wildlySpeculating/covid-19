@@ -4,8 +4,8 @@ import cn from 'classnames'
 
 import Tabs from './Tabs/Tabs'
 
-export default function TimeFrameSelector(props) {
-  const { activeTabId, className, onChange, timeFrames } = props
+export default function TabSelector(props) {
+  const { activeTabId, className, onChange, tabList } = props
 
   return (
     <Tabs
@@ -13,7 +13,7 @@ export default function TimeFrameSelector(props) {
       className={cn('o-grid  o-grid--justify-center', className)}
       onChange={onChange}
     >
-      {timeFrames.map(({ id, content }) => (
+      {tabList.map(({ id, content }) => (
         <Tabs.Tab
           className="o-grid__item  u-text-center  u-no-wrap  u-1/3  u-1/5@desktop"
           id={id}
@@ -26,11 +26,11 @@ export default function TimeFrameSelector(props) {
   )
 }
 
-TimeFrameSelector.propTypes = {
+TabSelector.propTypes = {
   activeTabId: PropTypes.string.isRequired,
   className: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  timeFrames: PropTypes.arrayOf(
+  tabList: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       content: PropTypes.node.isRequired,
@@ -38,6 +38,6 @@ TimeFrameSelector.propTypes = {
   ).isRequired,
 }
 
-TimeFrameSelector.defaultProps = {
+TabSelector.defaultProps = {
   className: '',
 }

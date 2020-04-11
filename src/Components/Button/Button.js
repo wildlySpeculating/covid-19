@@ -3,20 +3,24 @@ import PropTypes from 'prop-types'
 import cn from 'classnames'
 
 export default function Button(props) {
-  const { children, className, ...buttonProps } = props
+  const { children, className, href, ...buttonProps } = props
+
+  const Element = href ? 'a' : 'button'
 
   return (
-    <button className={cn('c-button', className)} {...buttonProps}>
+    <Element className={cn('c-button', className)} {...buttonProps}>
       {children}
-    </button>
+    </Element>
   )
 }
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  href: PropTypes.string,
 }
 
 Button.defaultProps = {
   className: '',
+  href: '',
 }

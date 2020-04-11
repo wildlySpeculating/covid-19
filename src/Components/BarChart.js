@@ -148,8 +148,6 @@ function ToolTipMobile(props) {
     },
   } = props
 
-  console.log('props.info', props.info)
-
   return (
     <table className="u-margin-bot-none">
       <tbody>

@@ -33,7 +33,6 @@ export default function SearchByZipCode(props) {
         getSearchSuggestions={getCountySearchSuggestionsByZip}
         handleChange={handleChange}
         handleSelect={handleSuggestionSelect}
-        headingText={'Seach by zip'}
         id={'zipSeach'}
         labelText={'County name'}
         searchTerm={searchTerm}
@@ -45,5 +44,9 @@ export default function SearchByZipCode(props) {
 }
 
 SearchByZipCode.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
+}
+
+SearchByZipCode.defaultProps = {
+  className: '',
 }

@@ -32,7 +32,6 @@ export default function SearchByCounty(props) {
         getSearchSuggestions={getCountySearchSuggestionsByCountyName}
         handleChange={handleChange}
         handleSelect={handleSuggestionSelect}
-        headingText={'Seach by county'}
         id={'countySearch'}
         labelText={'County name'}
         searchTerm={searchTerm}
@@ -44,5 +43,9 @@ export default function SearchByCounty(props) {
 }
 
 SearchByCounty.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
+}
+
+SearchByCounty.defaultProps = {
+  className: '',
 }

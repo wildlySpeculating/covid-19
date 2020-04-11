@@ -37,7 +37,6 @@ export default function SearchByState(props) {
         getSearchSuggestions={getStateSearchSuggestions}
         handleChange={handleChange}
         handleSelect={handleSuggestionSelect}
-        headingText={'Seach by state'}
         id={'stateSearch'}
         labelText={'State name'}
         searchTerm={searchTerm}
@@ -49,5 +48,9 @@ export default function SearchByState(props) {
 }
 
 SearchByState.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
+}
+
+SearchByState.defaultProps = {
+  className: '',
 }

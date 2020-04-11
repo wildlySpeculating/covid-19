@@ -1,8 +1,7 @@
 TODO
-- routing
-- click on trending to see map
 - make states all one list
-- add table for all of the counties in the state
+- make home button just a back button
+- write own lodash get function
 - make up arrow gradient based on percent
 - snippits for context
 - add data exceptions
@@ -10,6 +9,10 @@ TODO
 - write to file NYT data if data is updated
 
 DONE
+- make better search view
+- add table for all of the counties in the state
+- routing
+- click on trending to see bar chart
 - fix NYC data issues mentioned on github
 - add minimum 100 cases disclaimer to trending counties
 - maybe remove zip county csv
@@ -43,3 +46,10 @@ DONE
 "proxy": "https://raw.githubusercontent.com/",
 // const NY_TIMES_COUNTY_DATA_URL = '/nytimes/covid-19-data/master/us-counties.csv'
 // const NY_TIMES_STATE_DATA_URL = '/nytimes/covid-19-data/master/us-states.csv'
+
+
+
+    "css-core": "git+https://${CSS_CORE_ACCESS}:x-oauth-basic@github.com/pschreibs85/css_core.git",
+
+
+          {/* {'\u2b0c'} */}
