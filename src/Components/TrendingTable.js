@@ -4,6 +4,7 @@ import cn from 'classnames'
 import { Link } from 'react-router-dom'
 
 import TabSelector from './TabSelector'
+import UpArrowIcon from './UpArrowIcon'
 
 const FIVE = 'FIVE'
 const TEN = 'TEN'
@@ -50,10 +51,7 @@ export default function TrendingTable(props) {
               </Link>
               {/* <div className="o-grid__item--shrink">{high - low}</div> */}
               <div className="c-trending-chart-percent  o-grid__item--shrink  u-margin-left-small  u-text-right">
-                {percentIncrease > 0 && (
-                  <span className="c-trending-chart-up-arrow">{'\u2b06'}</span>
-                )}
-                {percentIncrease}%
+                {percentIncrease > 0 && <UpArrowIcon />} {percentIncrease}%
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 .app {
   text-align: center;
+  font-weight: 600;
 }
 
 .c-app-header {
@@ -66,10 +67,6 @@
   position: relative;
   top: 24px;
   left: 22px;
-}
-
-.c-trending-chart-up-arrow {
-  color: green;
 }
 
 .c-trending-chart-rank {
