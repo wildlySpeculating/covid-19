@@ -1,11 +1,13 @@
 TODO
 - routing
 - click on trending to see map
-- add minimum 100 cases disclaimer to trending counties
+- make states all one list
+- add table for all of the counties in the state
 - snippits for context
 - write to file NYT data if data is updated
 
 DONE
+- add minimum 100 cases disclaimer to trending counties
 - maybe remove zip county csv
 - mobile
 - trending upward

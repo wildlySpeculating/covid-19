@@ -10,7 +10,7 @@ import TrendingStates from './Components/TrendingStates'
 
 function App() {
   return (
-    <div className="App  u-margin-sides-large">
+    <div className="App  u-margin-sides-large@tablet">
       <header>
         <h1 className="c-app-title">United States COVID-19 Thingy</h1>
       </header>

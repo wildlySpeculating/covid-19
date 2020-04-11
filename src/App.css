@@ -62,3 +62,15 @@
   top: 24px;
   left: 22px;
 }
+
+.c-trending-chart-up-arrow {
+  color: green;
+}
+
+.c-trending-chart-rank {
+  min-width: 18px;
+}
+
+.c-trending-chart-percent {
+  min-width: 65px;
+}

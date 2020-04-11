@@ -2,9 +2,9 @@ import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import cn from 'classnames'
 
-import ViewTitle from './ViewTitle'
 import NYTAttribute from './NYTAttribute'
-import TrendingChart from './TrendingChart'
+import TrendingTable from './TrendingTable'
+import ViewTitle from './ViewTitle'
 
 export default function Trending(props) {
   const { className, displayCount, getData, title } = props
@@ -23,19 +23,19 @@ export default function Trending(props) {
     <div className={cn('c-trending', className)}>
       <div className="o-grid">
         <div className="o-grid__item  u-1/1">
-          <ViewTitle>{title}</ViewTitle>
+          <ViewTitle>{title}*</ViewTitle>
         </div>
         <div className="o-grid__item  u-1/1">
           <div className="o-grid  o-grid--justify-center  u-padding  u-border">
-            <TrendingChart
+            <TrendingTable
               className="o-grid__item  u-text-left  u-1/1  u-1/2@tablet  u-margin-bot  u-margin-bot-none@tablet"
               getData={getTrendingUp}
-              title={'Trending Up*'}
+              title={`Li'l more social distancing`}
             />
-            <TrendingChart
-              className="o-grid__item  u-text-left  u-1/1  u-1/2@tablet"
+            <TrendingTable
+              className="o-grid__item  u-text-left  u-1/1  u-1/2@tablet  u-padding-left@tablet"
               getData={getFlatteningTheCurve}
-              title={'Flattening the Curve'}
+              title={'Flattening the curve'}
             />
             <span className="c-trending-disclaimer  o-grid__item  u-1/1  u-text-right  u-font-size-tiny">
               *Minimum 100 cases

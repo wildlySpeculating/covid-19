@@ -41,19 +41,21 @@ export default function ResultsDisplay(props) {
   return (
     data &&
     data.length > 0 && (
-      <div className={cn('o-grid  u-border  u-padding-small', className)}>
-        <h5 className="o-grid__item  u-1/1  u-margin-bot-small">{displayName}</h5>
-        <div className="o-grid__item  u-1/1">
-          <TimeFrameSelector
-            activeTabId={activeTabId}
-            onChange={handleChange}
-            timeFrames={timeFrames}
-          />
+      <div>
+        <div className={cn('o-grid  u-border  u-padding-small', className)}>
+          <h5 className="o-grid__item  u-1/1  u-margin-bot-small">{displayName}</h5>
+          <div className="o-grid__item  u-1/1">
+            <TimeFrameSelector
+              activeTabId={activeTabId}
+              onChange={handleChange}
+              timeFrames={timeFrames}
+            />
+          </div>
+          <div className="o-grid__item  u-1/1">
+            <BarChart data={barChartData}></BarChart>
+          </div>
         </div>
-        <div className="o-grid__item  u-1/1">
-          <BarChart data={barChartData}></BarChart>
-        </div>
-        <NYTAttribute />
+        <NYTAttribute className="u-text-left" />
       </div>
     )
   )
