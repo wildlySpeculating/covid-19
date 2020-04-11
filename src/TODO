@@ -33,23 +33,17 @@ DONE
 - combine CountyResults and StateResults
 
 
-    "css-core": "git+ssh://git@github.com:pschreibs85/css_core.git",
+"css-core": "git+ssh://git@github.com:pschreibs85/css_core.git",
 
-    "css-core": "git+https://github.com/pschreibs85/css_core.git",
+"css-core": "git+https://github.com/pschreibs85/css_core.git",
 
-    "css-core": "git+https://${CSS_CORE_ACCESS}:x-oauth-basic@github.com/pschreibs85/css_core.git",
-
-
-    "css-core": "git+https://$npm_package_css:x-oauth-basic@github.com/pschreibs85/css_core.git",
+"css-core": "git+https://${CSS_CORE_ACCESS}:x-oauth-basic@github.com/pschreibs85/css_core.git",
 
 
-"proxy": "https://raw.githubusercontent.com/",
-// const NY_TIMES_COUNTY_DATA_URL = '/nytimes/covid-19-data/master/us-counties.csv'
-// const NY_TIMES_STATE_DATA_URL = '/nytimes/covid-19-data/master/us-states.csv'
+"css-core": "git+https://$npm_package_css:x-oauth-basic@github.com/pschreibs85/css_core.git",
 
 
-
-    "css-core": "git+https://${CSS_CORE_ACCESS}:x-oauth-basic@github.com/pschreibs85/css_core.git",
+"css-core": "git+https://${CSS_CORE_ACCESS}:x-oauth-basic@github.com/pschreibs85/css_core.git",
 
 
           {/* {'\u2b0c'} */}

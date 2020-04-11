@@ -12,13 +12,13 @@ export default function Home(props) {
     <div className={cn('', className)}>
       <nav>
         <ul className="o-list-bare">
-          <li>
+          <li className="u-margin-bot-tiny">
             <Link to={STATIC_ROUTES.SEARCH}>Seach</Link>
           </li>
-          <li>
+          <li className="u-margin-bot-tiny">
             <Link to={STATIC_ROUTES.STATE_TRENDS}>State Trends</Link>
           </li>
-          <li>
+          <li className="u-margin-bot-tiny">
             <Link to={STATIC_ROUTES.COUNTY_TRENDS}>County Trends</Link>
           </li>
         </ul>
