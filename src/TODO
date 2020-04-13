@@ -1,10 +1,10 @@
 TODO
 - make states all one list
+- add top counties overall count next to percent increase
 - make home button just a back button
-- write own lodash get function
 - make up arrow gradient based on percent
 - snippits for context
-- add data exceptions
+- write own lodash get function
 - fix Kansas City data issues mentioned on github
 - write to file NYT data if data is updated
 
