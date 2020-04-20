@@ -38,7 +38,6 @@ export default function SearchView(props) {
 }
 
 SearchView.propTypes = {
-  children: PropTypes.node.isRequired,
   className: PropTypes.string,
 }
 

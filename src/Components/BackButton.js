@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { STATIC_ROUTES } from '../Routes'
 
 export default function BackButton(props) {
-  const { children, className, history } = props
+  const { className, history } = props
 
   const isHome = history.location.pathname === STATIC_ROUTES.HOME
 
@@ -17,13 +17,11 @@ export default function BackButton(props) {
           Home
         </Link>
       </nav>
-      {children}
     </div>
   )
 }
 
 BackButton.propTypes = {
-  children: PropTypes.node.isRequired,
   className: PropTypes.string,
 }
 

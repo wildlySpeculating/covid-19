@@ -50,6 +50,29 @@ export default function CovidDataContextProvider(props) {
     initialState
   )
 
+  // useEffect(() => {
+  //   async function getStateData() {
+  //     // const data = await fetch('/.netlify/functions/' + 'getNYTStateData')
+  //     fetch('../../.netlify/functions/getNYTStateData')
+  //       .then((res) => res.json())
+  //       .then((x) => {
+  //         console.log('x.body', x.body)
+  //         return x.body
+  //       })
+  //   }
+
+  //   const ans = getStateData()
+
+  //   console.log('ans', ans)
+
+  //   async function hello() {
+  //     const data = await fetch('../.netlify/functions/' + 'hello')
+  //     console.log('data.body', data.body)
+  //   }
+
+  //   hello()
+  // }, [])
+
   const CovidDataContextValue = useMemo(
     () => ({
       CovidDataContextState,
