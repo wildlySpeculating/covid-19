@@ -7,6 +7,8 @@ TODO
 - write own lodash get function
 - fix Kansas City data issues mentioned on github
 - write to file NYT data if data is updated
+- add daily new cases chart
+- use axios in /api
 
 DONE
 - make better search view

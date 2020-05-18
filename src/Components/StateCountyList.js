@@ -29,8 +29,8 @@ export default function StateCountyList(props) {
             </tr>
           </thead>
           <tbody>
-            {countyList.map(({ countyName, cases, deaths, href }) => (
-              <tr>
+            {countyList.map(({ countyName, cases, deaths, fips, href }) => (
+              <tr key={fips}>
                 <td className="u-text-left">
                   <Link to={href}>{countyName}</Link>
                 </td>

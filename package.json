@@ -10,7 +10,6 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
-    "covid-19-data": "git://github.com/nytimes/covid-19-data.git",
     "css-core": "git://github.com/pschreibs85/css_core.git",
     "csv-parser": "^2.3.2",
     "lodash.get": "^4.4.2",

@@ -31,13 +31,19 @@ export default function useCovidData() {
 
   const getCountyDataByFips = useCallback(
     (fips) => {
+      if (countyCovidData.length === 0) {
+        return { covidData: [], displayName: '' }
+      }
+
       const NYC_FIPS = new Set(['36061', '36047', '36081', '36005', '36085'])
       const NEW_YORK_CITY = 'New York City'
       const isNYC = NYC_FIPS.has(fips)
 
-      const covidData = countyCovidData.filter((item) =>
-        isNYC ? item[1] === NEW_YORK_CITY : item[3] === fips
-      )
+      const covidData =
+        countyCovidData &&
+        countyCovidData.filter((item) =>
+          isNYC ? item.county === NEW_YORK_CITY : item.fips === fips
+        )
       const countyName = isNYC ? NEW_YORK_CITY : fipsToCountyNameMap[fips]
       const state = fipsToStateNameMap[fips.slice(0, 2)]
 
@@ -80,7 +86,11 @@ export default function useCovidData() {
 
   const getStateDataByFips = useCallback(
     (fips) => {
-      const covidData = stateCovidData.filter((item) => item[2] === fips)
+      if (stateCovidData.length === 0) {
+        return { covidData: [], displayName: '' }
+      }
+
+      const covidData = stateCovidData.filter((item) => item.fips === fips)
       const displayName = get(fipsToStateNameMap, [fips, 'full'], '')
 
       return { id: fips, covidData, displayName }
@@ -94,10 +104,10 @@ export default function useCovidData() {
 
       const latestCountyData = countyCovidData
         .slice(sliceIndex)
-        .filter((item) => item[3].startsWith(fips))
-        .map(([_, countyName, __, fips, cases, deaths]) => {
+        .filter((item) => item.fips.startsWith(fips))
+        .map(({ county, fips, cases, deaths }) => {
           const href = DYNAMIC_ROUTES.COUNTY_RESULTS(fips)
-          return { countyName, cases, deaths, href }
+          return { countyName: county, cases, deaths, href, fips }
         })
 
       return latestCountyData
@@ -122,15 +132,13 @@ export default function useCovidData() {
 
   const getTrendingCounties = useCallback(
     (daysInTimeFrame) => {
-      const fipsToHightLowMap = createFipsHightToLowMap({
-        casesIdx: 4,
+      const fipsToHighLowMap = createFipsHightToLowMap({
         dataArray: countyCovidData,
         daysInTimeFrame,
-        fipsIdx: 3,
       })
 
       // calculate and sort by percent change and add in names
-      const sortedByTrendArray = Object.entries(fipsToHightLowMap)
+      const sortedByTrendArray = Object.entries(fipsToHighLowMap)
         .filter(([fips, { high }]) => fips && high > 100)
         .map(([fips, { high, low }]) => {
           const name = `${get(fipsToCountyNameMap, [fips], fips)}, ${get(
@@ -153,15 +161,13 @@ export default function useCovidData() {
 
   const getTrendingStates = useCallback(
     (daysInTimeFrame) => {
-      const fipsToHightLowMap = createFipsHightToLowMap({
-        casesIdx: 3,
+      const fipsToHighLowMap = createFipsHightToLowMap({
         dataArray: stateCovidData,
         daysInTimeFrame,
-        fipsIdx: 2,
       })
 
       // calculate and sort by percent change and add in names
-      const sortedByTrendArray = Object.entries(fipsToHightLowMap)
+      const sortedByTrendArray = Object.entries(fipsToHighLowMap)
         .filter(([fips, { high }]) => fips && high > 100)
         .map(([fips, { high, low }]) => {
           const href = DYNAMIC_ROUTES.STATE_RESULTS(fips)
@@ -220,7 +226,7 @@ function findSliceIndex(dataList, daysInTimeFrame) {
   const dateSet = new Set()
 
   for (let i = dataList.length - 1; i >= 0; i--) {
-    const itemDate = dataList[i][0]
+    const itemDate = dataList[i].date
     if (!dateSet.has(itemDate)) {
       if (dateSet.size === daysInTimeFrame) {
         return i + 1
@@ -232,7 +238,7 @@ function findSliceIndex(dataList, daysInTimeFrame) {
   return 0
 }
 
-function createFipsHightToLowMap({ dataArray, daysInTimeFrame, casesIdx, fipsIdx }) {
+function createFipsHightToLowMap({ dataArray, daysInTimeFrame }) {
   // find the slice index so we know what info we care about
   const sliceIndex = findSliceIndex(dataArray, daysInTimeFrame)
 
@@ -240,19 +246,16 @@ function createFipsHightToLowMap({ dataArray, daysInTimeFrame, casesIdx, fipsIdx
   const releventData = dataArray.slice(sliceIndex)
 
   // iterate through dataset to find low and high for each fips
-  const fipsToHightLowMap = releventData.reduce((prev, curr) => {
-    const fips = curr[fipsIdx]
-    const cases = curr[casesIdx]
-
+  const fipsToHighLowMap = releventData.reduce((prev, { cases, fips }) => {
     if (!prev.hasOwnProperty(fips)) {
-      prev[fips] = { high: Number(cases), low: Number(cases) }
+      prev[fips] = { high: cases, low: cases }
     } else {
       prev[fips].high = Math.max(prev[fips].high, cases)
     }
     return prev
   }, {})
 
-  return fipsToHightLowMap
+  return fipsToHighLowMap
 }
 
 function calculatePercentIncrease(low, high) {

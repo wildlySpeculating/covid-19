@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cn from 'classnames'
+
 import { Link } from 'react-router-dom'
 
 import { STATIC_ROUTES } from '../Routes'
@@ -8,23 +9,9 @@ import { STATIC_ROUTES } from '../Routes'
 export default function Home(props) {
   const { className } = props
 
-  const onClick = () => {
-    async function getStateData() {
-      const data = await fetch('/.netlify/functions/getNYTStateData').then((res) => res.json())
-
-      console.log('data', data)
-      return data
-    }
-
-    const ans = getStateData()
-
-    console.log('ans', ans)
-  }
-
   return (
     <div className={cn('', className)}>
       <nav>
-        <button onClick={onClick}> hello</button>
         <ul className="o-list-bare">
           <li className="u-margin-bot-tiny">
             <Link to={STATIC_ROUTES.SEARCH}>Seach</Link>

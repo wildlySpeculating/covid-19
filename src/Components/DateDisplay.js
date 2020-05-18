@@ -6,9 +6,9 @@ export default function DateDisplay(props) {
 
   const dateObject = new Date(
     date
-      .split('-')
+      .split('/')
       .map((x, i) => (i === 2 ? Number(x) + 1 : x))
-      .join('-')
+      .join('/')
   )
   const options = { weekday: 'long', month: 'long', day: 'numeric' }
   const displayedDate = dateObject.toLocaleDateString('en-US', options)

@@ -1,7 +1,7 @@
 import { fetchAndParseCSV } from '../helpers'
 
-const NY_TIMES_STATE_DATA_URL =
-  'https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv'
+const NY_TIMES_COUNTY_DATA_URL =
+  'https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv'
 
 function processData(dataset) {
   return dataset.map((item) => ({
@@ -13,7 +13,7 @@ function processData(dataset) {
 }
 
 export async function handler(event, context, callback) {
-  const data = await fetchAndParseCSV(NY_TIMES_STATE_DATA_URL)
+  const data = await fetchAndParseCSV(NY_TIMES_COUNTY_DATA_URL)
 
   const processedData = processData(data)
 

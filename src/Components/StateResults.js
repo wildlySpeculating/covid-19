@@ -18,10 +18,10 @@ export default function StateResults(props) {
   const barChartData = useMemo(() => {
     return (
       covidData &&
-      covidData.map(([date, _, __, cases, deaths]) => ({
-        date: date.split('-').slice(1).join('/'),
-        cases: Number(cases),
-        deaths: Number(deaths),
+      covidData.map(({ date, cases, deaths }) => ({
+        date,
+        cases,
+        deaths,
       }))
     )
   }, [covidData])

@@ -1,12 +1,12 @@
 import React, { useEffect, useMemo, useReducer } from 'react'
 import PropTypes from 'prop-types'
 import papa from 'papaparse'
-import NY_TIMES_COUNTY_DATA from 'covid-19-data/us-counties.csv'
-import NY_TIMES_STATE_DATA from 'covid-19-data/us-states.csv'
 
 import CovidDataContext, { defaultContext } from './CovidDataContext'
 import zipCountyFips from '../ZIP-COUNTY-FIPS_2018-03.csv'
 import fipsToStateNameMap from '../data/fipsToStateNameMap'
+
+import { fetchCountyData, fetchStateData } from '../api'
 
 const initialState = defaultContext
 
@@ -50,29 +50,6 @@ export default function CovidDataContextProvider(props) {
     initialState
   )
 
-  // useEffect(() => {
-  //   async function getStateData() {
-  //     // const data = await fetch('/.netlify/functions/' + 'getNYTStateData')
-  //     fetch('../../.netlify/functions/getNYTStateData')
-  //       .then((res) => res.json())
-  //       .then((x) => {
-  //         console.log('x.body', x.body)
-  //         return x.body
-  //       })
-  //   }
-
-  //   const ans = getStateData()
-
-  //   console.log('ans', ans)
-
-  //   async function hello() {
-  //     const data = await fetch('../.netlify/functions/' + 'hello')
-  //     console.log('data.body', data.body)
-  //   }
-
-  //   hello()
-  // }, [])
-
   const CovidDataContextValue = useMemo(
     () => ({
       CovidDataContextState,
@@ -91,27 +68,22 @@ export default function CovidDataContextProvider(props) {
 
   // add raw NYT county data to context
   useEffect(() => {
-    papa.parse(NY_TIMES_COUNTY_DATA, {
-      download: true,
-      complete: function (results, file) {
-        CovidDataContextDispatch({
-          type: ACTION_TYPES.SET_RAW_COUNTY_COVID_DATA,
-          payload: results.data,
-        })
-      },
+    fetchCountyData().then((data) => {
+      // console.log('countyData', data)
+      CovidDataContextDispatch({
+        type: ACTION_TYPES.SET_RAW_COUNTY_COVID_DATA,
+        payload: data,
+      })
     })
   }, [])
 
   // add raw NYT state data to context
   useEffect(() => {
-    papa.parse(NY_TIMES_STATE_DATA, {
-      download: true,
-      complete: function (results, file) {
-        CovidDataContextDispatch({
-          type: ACTION_TYPES.SET_RAW_STATE_COVID_DATA,
-          payload: results.data,
-        })
-      },
+    fetchStateData().then((data) => {
+      CovidDataContextDispatch({
+        type: ACTION_TYPES.SET_RAW_STATE_COVID_DATA,
+        payload: data,
+      })
     })
   }, [])
 
