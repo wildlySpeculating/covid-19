@@ -13,7 +13,7 @@
     "css-core": "git://github.com/pschreibs85/css_core.git",
     "csv-parser": "^2.3.2",
     "lodash.get": "^4.4.2",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "node-sass": "^4.13.1",
     "papaparse": "^5.1.1",
     "react": "^16.13.1",
